@@ -8,17 +8,30 @@
 ;; Print a collection
 (defn print-coll
   [coll]
-  (for [x chosen]
+  (for [x coll]
     (print x))
   )
 
 (def loogout "Listen up World, here it comes. Loogout ya bish. \n")
 
-(print-that-ish (elegy-chosen-string loogout 10))
+(print-coll (string-repeat loogout 10))
 
 
-(for [x (concat ["Whales"] ["\n"])]
+(for [x (concat ["Whales."] ["\n"])]
               (print x))
+
+(defn forever [a b c & d]
+  (if (nil? d)
+    (* a b c)
+    (loop [x d
+           y (* a b c)]
+      (if (empty? x)
+        y
+        (recur (rest x) (* y (first x))))
+      )
+    ))
+
+(forever 10 2 3 4 10 10)
 
 (defn -main
   "I don't do a whole lot ... yet."
