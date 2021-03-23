@@ -42,6 +42,8 @@
 
 (do-this-to-everything * 10 2 3 4 10 10)
 
+
+
 ;; (defn look
 ;;   ""
 ;;   [x]
@@ -52,7 +54,3 @@
 ;;   [reps]
 ;;   (for [x ]
 ;;     (print x)))
-
-
-(demo 7 (lpf (mix (saw [50 (line 100 1600 5) 101 100.5]))
-                   (lin-lin (lf-tri (line 2 20 5)) -1 1 400 4000)))
