@@ -43,6 +43,17 @@
 (do-this-to-everything * 10 2 3 4 10 10)
 
 
+(defn mult-9-map [m num]
+  (loop [x (map #(* 9 %) m)
+         n num
+         result []]
+    (if (= (count result) n)
+      result
+      (recur (map #(* 9 %) x) n (conj result x)))
+    ))
+
+(take 3 (mult-9-map [1 2 3] 5))
+
 
 ;; (defn look
 ;;   ""
