@@ -43,16 +43,37 @@
 (do-this-to-everything * 10 2 3 4 10 10)
 
 
-(defn mult-9-map [m num]
-  (loop [x (map #(* 9 %) m)
+(defn iterate-func-map [m func num]
+  (loop [x (map func m)
          n num
          result []]
     (if (= (count result) n)
       result
-      (recur (map #(* 9 %) x) n (conj result x)))
+      (recur (map func x) n (conj result x)))
     ))
 
-(take 3 (mult-9-map [1 2 3] 5))
+(take 3 (iterate-func-map [1 2 3] #(*' 9 %) 5))
+(take-last 2 (iterate-func-map [1 2 3] #(*' 9 %) 50))
+
+(defn gimme-that-math [s n]
+  (loop [st s
+         nu n
+         result []]
+    (if (<= nu (count result))
+      result
+      (recur st nu (conj result st))
+      )))
+
+(defn iterate-exponential [nu func cnt]
+  (loop [x nu
+        y func
+        n cnt
+        result []]
+   (if (<= n (count result))
+     result
+     (recur x y n
+            (conj result (y x (y x (+ (count result) 1))))))))
+
 
 
 ;; (defn look
